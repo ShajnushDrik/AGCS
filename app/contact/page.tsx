@@ -1,10 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Phone, Mail, Clock, Facebook, Youtube } from "lucide-react"
+import { MapPin, Phone, Mail, Facebook, Youtube, Send } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
@@ -14,159 +16,107 @@ export default function ContactPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[400px] bg-muted overflow-hidden">
+      <section className="relative h-[350px] bg-blue-900 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://agcs.edu.bd/storage/images/sliders/1707033925_03.jpg"
-            alt="Contact Us"
+            alt="Contact AGCS"
             fill
-            className="object-cover"
+            priority
+            className="object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-foreground/50" />
         </div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-5xl font-bold mb-4 text-balance">Get In Touch</h1>
-            <p className="text-xl text-balance opacity-90">We'd love to hear from you</p>
-          </div>
+        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+          <h1 className="text-5xl font-bold text-white mb-2">Contact Us</h1>
+          <p className="text-xl text-blue-100">We are here to help and answer any question you might have.</p>
         </div>
       </section>
 
-      {/* Contact Info & Form Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+      <section className="py-16 container mx-auto px-4">
+        <div className="grid lg:grid-cols-3 gap-8">
+          
+          {/* Contact Details */}
+          <div className="lg:col-span-1 space-y-4">
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">Information</h2>
             
-            {/* Left Column: Contact Information */}
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
-              
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 text-primary p-3 rounded-lg">
-                      <MapPin className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold mb-2">Address</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        401/1, New Eskaton Road<br />Dhaka, Bangladesh
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-secondary/10 text-secondary p-3 rounded-lg">
-                      <Phone className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold mb-2">Phone Numbers</h3>
-                      <p className="text-muted-foreground text-sm">
-                        +880-2-41031641<br />+880-2-41032356
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-accent/10 text-accent p-3 rounded-lg">
-                      <Mail className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold mb-2">Email</h3>
-                      <p className="text-muted-foreground text-sm">info@agcs.edu.bd</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="pt-4">
-                <h3 className="font-bold mb-4">Follow Us</h3>
-                <div className="flex gap-3">
-                  <a href="https://www.facebook.com/61553904477115" target="_blank" rel="noopener noreferrer" className="bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg transition-colors">
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a href="https://www.youtube.com/@AGCSDhaka" target="_blank" rel="noopener noreferrer" className="bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg transition-colors">
-                    <Youtube className="h-5 w-5" />
-                  </a>
+            <Card className="border-none shadow-sm bg-slate-50">
+              <CardContent className="p-6 flex items-start gap-4">
+                <MapPin className="h-6 w-6 text-blue-900 mt-1" />
+                <div>
+                  <h3 className="font-bold">Address</h3>
+                  <p className="text-sm text-slate-600">401/1, New Eskaton Road, Dhaka</p>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            {/* Right Column: The Fixed Formspree Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
-              <Card>
-                <CardContent className="p-8">
-                  <form action="https://formspree.io/f/mnjqyarg" method="POST" className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-name">Your Name *</Label>
-                        <Input id="contact-name" name="name" placeholder="Enter your name" required />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-surname">Your Surname</Label>
-                        <Input id="contact-surname" name="surname" placeholder="Enter your surname" />
-                      </div>
-                    </div>
+            <Card className="border-none shadow-sm bg-slate-50">
+              <CardContent className="p-6 flex items-start gap-4">
+                <Phone className="h-6 w-6 text-blue-900 mt-1" />
+                <div>
+                  <h3 className="font-bold">Phone</h3>
+                  <p className="text-sm text-slate-600">+880-2-41031641</p>
+                </div>
+              </CardContent>
+            </Card>
 
+            <Card className="border-none shadow-sm bg-slate-50">
+              <CardContent className="p-6 flex items-start gap-4">
+                <Mail className="h-6 w-6 text-blue-900 mt-1" />
+                <div>
+                  <h3 className="font-bold">Email</h3>
+                  <p className="text-sm text-slate-600">info@agcs.edu.bd</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Form */}
+          <div className="lg:col-span-2">
+            <Card className="shadow-xl border-t-4 border-t-blue-900">
+              <CardContent className="p-8">
+                <form action="https://formspree.io/f/mnjqyarg" method="POST" className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="contact-email">Email Address *</Label>
-                      <Input id="contact-email" name="email" type="email" placeholder="your.email@example.com" required />
+                      <Label htmlFor="name">Full Name</Label>
+                      <Input id="name" name="name" required />
                     </div>
-
                     <div className="space-y-2">
-                      <Label htmlFor="contact-subject">Subject *</Label>
-                      <Input id="contact-subject" name="subject" placeholder="What is this regarding?" required />
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" name="email" type="email" required />
                     </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-message">Message *</Label>
-                      <Textarea id="contact-message" name="message" placeholder="Type your message here..." rows={6} required />
-                    </div>
-
-                    <Button type="submit" className="w-full bg-blue-900 text-white" size="lg">
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" name="subject" required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" name="message" rows={5} required />
+                  </div>
+                  <Button type="submit" className="w-full bg-blue-900 hover:bg-blue-800 text-white py-6 text-lg">
+                    <Send className="mr-2 h-5 w-5" /> Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-    {/* Map Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Find Us Here</h2>
-          <Card className="overflow-hidden border-none shadow-lg">
-            <CardContent className="p-0">
-              <div className="aspect-video w-full min-h-[450px]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.022646294713!2d90.39864237589578!3d23.746564689032603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b883f003bf53%3A0x42cb70bd6576d644!2sA.%20G.%20Church%20School!5e0!3m2!1sen!2sbd!4v1716300000000!5m2!1sen!2sbd"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Map */}
+      <section className="pb-20 container mx-auto px-4">
+        <div className="rounded-2xl overflow-hidden h-[400px] shadow-inner border">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.126588145219!2d90.3980183!3d23.7428456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b89796696773%3A0x280e8f3ef6b43292!2sAssemblies%20of%20God%20Church%20School!5e0!3m2!1sen!2sbd!4v1710000000000"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
+
       <Footer />
     </div>
   )

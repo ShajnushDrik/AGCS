@@ -145,27 +145,28 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
+    {/* Map Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Find Us Here</h2>
-          <Card>
+          <Card className="overflow-hidden border-none shadow-lg">
             <CardContent className="p-0">
-              <div className="aspect-video w-full">
+              <div className="aspect-video w-full min-h-[450px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.128711466074!2d90.3980183758832!3d23.742813589076044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8c3f003bf53%3A0x42cb70bd6576d644!2sA.%20G.%20Church%20School!5e0!3m2!1sen!2sbd!4v1714900000000!5m2!1sen!2sbd"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.022646294713!2d90.39864237589578!3d23.746564689032603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b883f003bf53%3A0x42cb70bd6576d644!2sA.%20G.%20Church%20School!5e0!3m2!1sen!2sbd!4v1716300000000!5m2!1sen!2sbd"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  className="rounded-lg"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
                 ></iframe>
               </div>
             </CardContent>
           </Card>
         </div>
       </section>
-
       <Footer />
     </div>
   )

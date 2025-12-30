@@ -130,48 +130,51 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
-              <Card>
-                <CardContent className="p-8">
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-name">Your Name *</Label>
-                        <Input id="contact-name" placeholder="Enter your name" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-surname">Your Surname</Label>
-                        <Input id="contact-surname" placeholder="Enter your surname" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-email">Email Address *</Label>
-                      <Input id="contact-email" type="email" placeholder="your.email@example.com" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-subject">Subject *</Label>
-                      <Input id="contact-subject" placeholder="What is this regarding?" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-message">Message *</Label>
-                      <Textarea id="contact-message" placeholder="Type your message here..." rows={6} />
-                    </div>
-
-                    <Button type="submit" className="w-full" size="lg">
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+           {/* Contact Form */}
+<div>
+  <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
+  <Card>
+    <CardContent className="p-8">
+      {/* 1. Added Formspree Link (Replace 'your-id' later) and method="POST" */}
+      <form action="https://formspree.io/f/mnjqyarg" method="POST" className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="contact-name">Your Name *</Label>
+            {/* 2. Added name="name" and required */}
+            <Input id="contact-name" name="name" placeholder="Enter your name" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="contact-surname">Your Surname</Label>
+            {/* 3. Added name="surname" */}
+            <Input id="contact-surname" name="surname" placeholder="Enter your surname" />
           </div>
         </div>
-      </section>
+
+        <div className="space-y-2">
+          <Label htmlFor="contact-email">Email Address *</Label>
+          {/* 4. Added name="email" and required */}
+          <Input id="contact-email" name="email" type="email" placeholder="your.email@example.com" required />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="contact-subject">Subject *</Label>
+          {/* 5. Added name="subject" */}
+          <Input id="contact-subject" name="subject" placeholder="What is this regarding?" required />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="contact-message">Message *</Label>
+          {/* 6. Added name="message" */}
+          <Textarea id="contact-message" name="message" placeholder="Type your message here..." rows={6} required />
+        </div>
+
+        <Button type="submit" className="w-full" size="lg">
+          Send Message
+        </Button>
+      </form>
+    </CardContent>
+  </Card>
+</div>
 
       {/* Map - Eskaton Road, Dhaka */}
       <section className="py-20 bg-muted/30">

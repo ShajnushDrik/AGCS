@@ -1,175 +1,234 @@
+"use client" // Required for the search and pagination to work
+
+import { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Bell, Calendar, Download, FileText, ExternalLink, Filter } from "lucide-react"
+import { 
+  Search, 
+  Calendar, 
+  Download, 
+  ChevronLeft, 
+  ChevronRight, 
+  Bell, 
+  FileText, 
+  ArrowUpRight 
+} from "lucide-react"
 
-// --- REAL AGCS DATA FROM OFFICIAL SITE ---
-const officialNotices = [
+// --- FUTURE-PROOF DATA SYSTEM ---
+// To add more notices in the future, just add a new object to this array.
+const ALL_NOTICES = [
   {
+    id: 1,
     date: "14 Dec 2025",
     title: "Admission Test Result Sheet (Bangla Medium Year - 2026)",
-    category: "Bangla Medium",
-    priority: "High",
+    category: "Admission",
+    tag: "Result",
+    link: "/docs/results-2026.pdf"
   },
   {
+    id: 2,
     date: "27 Nov 2025",
     title: "Notice for Bangla Medium Students - Year End Instructions",
     category: "Bangla Medium",
-    priority: "Normal",
+    tag: "Academic",
+    link: "#"
   },
   {
+    id: 3,
     date: "24 Nov 2025",
     title: "Important notice for the missed examination",
     category: "General",
-    priority: "Urgent",
+    tag: "Urgent",
+    link: "#"
   },
   {
+    id: 4,
     date: "23 Nov 2025",
     title: "Urgent Notice (English & Bangla Medium Combined)",
     category: "General",
-    priority: "Urgent",
+    tag: "Safety",
+    link: "#"
   },
   {
+    id: 5,
     date: "18 Nov 2025",
     title: "Lower Shishu result sheet for new admission 2026",
     category: "Admission",
-    priority: "High",
+    tag: "Result",
+    link: "#"
   },
   {
+    id: 6,
     date: "16 Nov 2025",
     title: "Online class notice regarding security concerns",
     category: "Academic",
-    priority: "Urgent",
-  },
-  {
-    date: "06 Nov 2025",
-    title: "School Newsletter (Issue: 11 November 2025)",
-    category: "General",
-    priority: "Normal",
+    tag: "Urgent",
+    link: "#"
   }
-]
+];
 
-export default function AGCSNoticeBoard() {
+export default function NoticeBoard() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  // Logic to filter notices based on search
+  const filteredNotices = ALL_NOTICES.filter(notice =>
+    notice.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    notice.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredNotices.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNotices = filteredNotices.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#F8FAFC]">
       <Navbar />
 
-      {/* AGCS Official Header Style */}
-      <section className="bg-blue-900 py-12 border-b-4 border-yellow-500">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-white text-center md:text-left">
-              <h1 className="text-4xl font-bold mb-2">AGCS Notice Board</h1>
-              <p className="text-blue-100 italic">"Train up a child in the way he should go"</p>
-            </div>
-            <div className="flex gap-3">
-              <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                English Medium
-              </Button>
-              <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                Bangla Medium
-              </Button>
-            </div>
+      {/* Hero Header */}
+      <section className="relative pt-20 pb-32 bg-blue-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mt-20" />
+        </div>
+        
+        <div className="container relative mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-yellow-500/30">
+            <Bell className="h-4 w-4 animate-bounce" />
+            Official AGCS Notice Board
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Latest <span className="text-yellow-400">Announcements</span>
+          </h1>
+          <p className="text-blue-100 max-w-2xl mx-auto text-lg opacity-80">
+            Stay informed with real-time updates regarding admissions, examinations, 
+            and school activities at A. G. Church School.
+          </p>
+        </div>
+      </section>
+
+      {/* Control Bar (Search & Filter) */}
+      <section className="container mx-auto px-4 -mt-12">
+        <div className="bg-white rounded-2xl shadow-xl p-4 md:p-6 border flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="relative w-full md:w-1/3">
+            <Search className="absolute left-3 top-1/2 -transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Input 
+              placeholder="Search by title or category..." 
+              className="pl-10 h-12 bg-gray-50 border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-900"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          
+          <div className="flex items-center gap-4 w-full md:w-auto">
+             <div className="text-sm font-medium text-gray-500 hidden md:block">
+               Showing {currentNotices.length} of {filteredNotices.length} notices
+             </div>
+             <div className="h-8 w-[1px] bg-gray-200 hidden md:block" />
+             <p className="text-xs font-bold text-blue-900 bg-blue-50 px-3 py-1 rounded">EIIN: 900078</p>
           </div>
         </div>
       </section>
 
-      {/* Main Notice Board Content */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            
-            {/* Filter / Search Bar */}
-            <div className="flex items-center justify-between mb-8 bg-white p-4 rounded-lg shadow-sm border">
-              <div className="flex items-center gap-2 text-blue-900 font-semibold">
-                <Filter className="h-5 w-5" />
-                <span>Filter by Year: 2025</span>
+      {/* Notices List */}
+      <section className="py-16 container mx-auto px-4">
+        <div className="max-w-5xl mx-auto space-y-4">
+          {currentNotices.length > 0 ? (
+            currentNotices.map((notice) => (
+              <Card key={notice.id} className="group hover:shadow-2xl transition-all duration-300 border-none shadow-sm overflow-hidden bg-white">
+                <CardContent className="p-0">
+                  <div className="flex flex-col md:flex-row">
+                    {/* Date Sidebar */}
+                    <div className="md:w-32 bg-gray-50 p-6 flex flex-col items-center justify-center border-r border-gray-100">
+                      <Calendar className="h-5 w-5 text-blue-900 mb-2" />
+                      <span className="text-xl font-black text-blue-900 leading-none">
+                        {notice.date.split(' ')[0]}
+                      </span>
+                      <span className="text-[10px] uppercase font-bold text-gray-500 mt-1">
+                        {notice.date.split(' ')[1]} {notice.date.split(' ')[2]}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-grow p-6">
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider">
+                          {notice.category}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-yellow-50 text-yellow-700 text-[10px] font-bold uppercase tracking-wider">
+                          {notice.tag}
+                        </span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-blue-900 transition-colors leading-tight">
+                        {notice.title}
+                      </h3>
+                    </div>
+
+                    {/* Download Action */}
+                    <div className="p-6 flex items-center justify-end border-t md:border-t-0 md:border-l border-gray-100 bg-white group-hover:bg-blue-900 transition-colors duration-300">
+                      <Button variant="ghost" className="group-hover:text-white flex gap-2 font-bold">
+                        <Download className="h-5 w-5" />
+                        <span className="md:hidden lg:inline">View PDF</span>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <div className="text-center py-20 bg-white rounded-2xl border-2 border-dashed">
+              <p className="text-gray-400">No notices found matching your search.</p>
+            </div>
+          )}
+
+          {/* Functional Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-4 pt-10">
+              <Button 
+                variant="outline" 
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="rounded-xl border-gray-200"
+              >
+                <ChevronLeft className="h-4 w-4 mr-2" /> Previous
+              </Button>
+              <div className="text-sm font-bold text-blue-900">
+                Page {currentPage} of {totalPages}
               </div>
-              <p className="text-sm text-muted-foreground italic">EIIN: 900078</p>
+              <Button 
+                variant="outline" 
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="rounded-xl border-gray-200"
+              >
+                Next <ChevronRight className="h-4 w-4 ml-2" />
+              </Button>
             </div>
-
-            {/* The Notice Table - Styled like agcs.edu.bd */}
-            <Card className="shadow-lg border-none">
-              <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-slate-100 border-b">
-                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Date</th>
-                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Notice Heading</th>
-                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Category</th>
-                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider text-right">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      {officialNotices.map((notice, index) => (
-                        <tr key={index} className="hover:bg-blue-50/50 transition-colors group">
-                          <td className="p-4 whitespace-nowrap">
-                            <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
-                              <Calendar className="h-4 w-4 text-blue-800" />
-                              {notice.date}
-                            </div>
-                          </td>
-                          <td className="p-4">
-                            <h3 className="font-semibold text-slate-800 group-hover:text-blue-900 transition-colors">
-                              {notice.title}
-                            </h3>
-                            {notice.priority === 'Urgent' && (
-                                <span className="inline-block mt-1 px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase animate-pulse">
-                                    Urgent
-                                </span>
-                            )}
-                          </td>
-                          <td className="p-4">
-                            <span className={`text-[10px] font-bold px-2 py-1 rounded-full uppercase ${
-                                notice.category === 'Admission' ? 'bg-green-100 text-green-700' : 
-                                notice.category === 'Bangla Medium' ? 'bg-amber-100 text-amber-700' :
-                                'bg-slate-100 text-slate-600'
-                            }`}>
-                              {notice.category}
-                            </span>
-                          </td>
-                          <td className="p-4 text-right">
-                            <Button variant="ghost" size="sm" className="text-blue-900 hover:bg-blue-100">
-                              <Download className="h-4 w-4 mr-2" /> PDF
-                            </Button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Pagination / Footer Info */}
-            <div className="mt-8 flex justify-center gap-2">
-                <Button variant="outline" size="sm" disabled>Previous</Button>
-                <Button variant="outline" size="sm" className="bg-blue-900 text-white">1</Button>
-                <Button variant="outline" size="sm">2</Button>
-                <Button variant="outline" size="sm">Next</Button>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Official Contact Info Footer Hook */}
-      <section className="py-12 bg-white border-t">
-        <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl font-bold text-blue-900 mb-4">Official Documentation</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                For legal inquiries or hard copies of these notices, please visit the Administrative Office at 401/1, New Eskaton Road, Dhaka.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-                <Button className="bg-blue-900 flex gap-2">
-                    <FileText className="h-4 w-4" /> Download Prospectus
-                </Button>
-                <Button variant="outline" className="border-blue-900 text-blue-900 flex gap-2">
-                    <ExternalLink className="h-4 w-4" /> Odhyyon Portal
-                </Button>
-            </div>
+      {/* Professional CTA */}
+      <section className="container mx-auto px-4 pb-20">
+        <div className="bg-blue-900 rounded-3xl p-8 md:p-12 relative overflow-hidden text-center md:text-left flex flex-col md:flex-row items-center justify-between">
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Looking for something else?</h2>
+            <p className="text-blue-200 max-w-md">Download our academic calendar or view the 2026 prospectus.</p>
+          </div>
+          <div className="relative z-10 mt-8 md:mt-0 flex flex-wrap gap-4 justify-center">
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold px-8 py-6 rounded-xl">
+              <FileText className="mr-2 h-5 w-5" /> Download Prospectus
+            </Button>
+            <Button variant="outline" className="text-white border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl">
+              Contact Admin <ArrowUpRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
 

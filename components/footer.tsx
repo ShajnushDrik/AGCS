@@ -1,5 +1,6 @@
-import { Facebook, Mail, Phone, MapPin, Instagram, Youtube } from "lucide-react"
+import { Facebook, Mail, Phone, MapPin, Youtube } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -8,10 +9,21 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* About */}
           <div>
-            <h3 className="font-bold text-lg mb-4">[School Name]</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <Image
+                src="https://www.agcs.edu.bd/storage/images/settings/1747110409_New%20AGCS%20Logo%20PNG.png"
+                alt="AGCS Logo"
+                width={40}
+                height={40}
+                className="object-contain brightness-0 invert"
+              />
+              <h3 className="font-bold text-lg">AGCS Dhaka</h3>
+            </div>
             <p className="text-sm text-background/80 leading-relaxed">
-              [Brief description of your school and its mission]
+              Providing quality education for the children of all communities since 1956. Train up a child in the way
+              he/she should go.
             </p>
+            <p className="text-xs text-background/60 mt-2">EIIN: 900078</p>
           </div>
 
           {/* Quick Links */}
@@ -46,31 +58,31 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Real Data */}
           <div>
             <h3 className="font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
-                <span className="text-background/80">[School Address]</span>
+                <span className="text-background/80">401/1, New Eskaton Road, Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span className="text-background/80">[Phone Number]</span>
+                <span className="text-background/80">+880-2-41031641</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="text-background/80">[Email Address]</span>
+                <span className="text-background/80">info@agcs.edu.bd</span>
               </li>
             </ul>
           </div>
 
-          {/* Social Media */}
+          {/* Social Media - Real Links */}
           <div>
             <h3 className="font-bold text-lg mb-4">Follow Us</h3>
             <div className="flex gap-3">
               <a
-                href="[Facebook URL]"
+                href="https://www.facebook.com/61553904477115"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background/10 hover:bg-background/20 p-2 rounded-lg transition-colors"
@@ -78,15 +90,7 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="[Instagram URL]"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-background/10 hover:bg-background/20 p-2 rounded-lg transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="[YouTube URL]"
+                href="https://www.youtube.com/@AGCSDhaka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background/10 hover:bg-background/20 p-2 rounded-lg transition-colors"
@@ -96,7 +100,7 @@ export function Footer() {
             </div>
             <div className="mt-6">
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=[YOUR_FB_PAGE]&tabs=timeline&width=280&height=200&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F61553904477115&tabs=timeline&width=280&height=200&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
                 width="280"
                 height="200"
                 className="border-none rounded-lg"
@@ -109,8 +113,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center">
-          <p className="text-sm text-background/80">© {new Date().getFullYear()} [School Name]. All rights reserved.</p>
-          <p className="text-xs text-background/60 mt-2">Redesigned with ❤️ by a passionate 7th grader</p>
+          <p className="text-sm text-background/80">
+            © {new Date().getFullYear()} Assemblies of God Church School, Dhaka. All rights reserved.
+          </p>
+          <p className="text-xs text-background/60 mt-2">Redesigned with care by a passionate 7th grader</p>
         </div>
       </div>
     </footer>

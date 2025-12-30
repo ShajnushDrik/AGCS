@@ -4,21 +4,29 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Facebook, Youtube } from "lucide-react"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Hero Section */}
       <section className="relative h-[400px] bg-muted overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/contact-hero.jpg" alt="Contact Us" fill className="object-cover" />
+          <Image
+            src="https://agcs.edu.bd/storage/images/sliders/1707033925_03.jpg"
+            alt="Contact Us"
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl font-bold mb-4 text-balance">Get In Touch</h1>
-            <p className="text-xl text-balance opacity-90">We'd love to hear from you</p>
+            <p className="text-xl text-balance opacity-90">We&apos;d love to hear from you</p>
           </div>
         </div>
       </section>
@@ -27,7 +35,7 @@ export default function ContactPage() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
+            {/* Contact Information - Real Data */}
             <div>
               <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
               <div className="space-y-6">
@@ -40,11 +48,9 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-bold mb-2">Address</h3>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                          [Your School Address]
+                          401/1, New Eskaton Road
                           <br />
-                          [City, Postal Code]
-                          <br />
-                          [Country]
+                          Dhaka, Bangladesh
                         </p>
                       </div>
                     </div>
@@ -60,11 +66,11 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-bold mb-2">Phone Numbers</h3>
                         <p className="text-muted-foreground text-sm">
-                          Main Office: [Phone Number]
+                          +880-2-41031641
                           <br />
-                          Admission: [Phone Number]
+                          +880-2-41032356
                           <br />
-                          Emergency: [Phone Number]
+                          +880-2-41030971
                         </p>
                       </div>
                     </div>
@@ -79,13 +85,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-bold mb-2">Email</h3>
-                        <p className="text-muted-foreground text-sm">
-                          General: [email@school.com]
-                          <br />
-                          Admissions: [admissions@school.com]
-                          <br />
-                          Principal: [principal@school.com]
-                        </p>
+                        <p className="text-muted-foreground text-sm">info@agcs.edu.bd</p>
                       </div>
                     </div>
                   </CardContent>
@@ -98,25 +98,19 @@ export default function ContactPage() {
                         <Clock className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-bold mb-2">Office Hours</h3>
-                        <p className="text-muted-foreground text-sm">
-                          Monday - Friday: [TIME] - [TIME]
-                          <br />
-                          Saturday: [TIME] - [TIME]
-                          <br />
-                          Sunday: Closed
-                        </p>
+                        <h3 className="font-bold mb-2">School Info</h3>
+                        <p className="text-muted-foreground text-sm">EIIN: 900078</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Social Media */}
+                {/* Social Media - Real Links */}
                 <div className="pt-4">
                   <h3 className="font-bold mb-4">Follow Us</h3>
                   <div className="flex gap-3">
                     <a
-                      href="[Facebook URL]"
+                      href="https://www.facebook.com/61553904477115"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg transition-colors"
@@ -124,15 +118,7 @@ export default function ContactPage() {
                       <Facebook className="h-5 w-5" />
                     </a>
                     <a
-                      href="[Instagram URL]"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg transition-colors"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </a>
-                    <a
-                      href="[YouTube URL]"
+                      href="https://www.youtube.com/@AGCSDhaka"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-primary/10 hover:bg-primary/20 text-primary p-3 rounded-lg transition-colors"
@@ -150,19 +136,20 @@ export default function ContactPage() {
               <Card>
                 <CardContent className="p-8">
                   <form className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-name">Full Name *</Label>
-                      <Input id="contact-name" placeholder="Enter your name" />
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="contact-name">Your Name *</Label>
+                        <Input id="contact-name" placeholder="Enter your name" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="contact-surname">Your Surname</Label>
+                        <Input id="contact-surname" placeholder="Enter your surname" />
+                      </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="contact-email">Email Address *</Label>
                       <Input id="contact-email" type="email" placeholder="your.email@example.com" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-phone">Phone Number</Label>
-                      <Input id="contact-phone" type="tel" placeholder="01XXXXXXXXX" />
                     </div>
 
                     <div className="space-y-2">
@@ -186,7 +173,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map */}
+      {/* Map - Eskaton Road, Dhaka */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Find Us Here</h2>
@@ -194,7 +181,7 @@ export default function ContactPage() {
             <CardContent className="p-0">
               <div className="aspect-video w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9064094296497!2d90.39225451543203!3d23.750840384589724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ1JzAzLjAiTiA5MMKwMjMnNDAuNSJF!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9025892697686!2d90.39589!3d23.75099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b7a55cd64f%3A0xf8c52f5f5f5f5f5f!2s401%2F1%20New%20Eskaton%20Rd%2C%20Dhaka%201000!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -206,11 +193,9 @@ export default function ContactPage() {
               </div>
             </CardContent>
           </Card>
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            [Replace the iframe src with your school's actual Google Maps embed link]
-          </p>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

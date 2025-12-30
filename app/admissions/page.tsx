@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, Calendar, FileText, Users, CreditCard } from "lucide-react"
+import { CheckCircle, FileText, Users, CreditCard, ClipboardList } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
@@ -15,19 +15,63 @@ export default function AdmissionsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] bg-muted overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/students-excited-admission.jpg" alt="Join Our School" fill className="object-cover" />
+          <Image
+            src="https://agcs.edu.bd/storage/images/sliders/1707033952_03.JPG"
+            alt="Join AGCS"
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl font-bold mb-4 text-balance">Join Our Family</h1>
-            <p className="text-xl text-balance opacity-90">Start your journey towards excellence</p>
+            <p className="text-xl text-balance opacity-90">Start your journey towards excellence at AGCS</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Admission Requirements - Real Content */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Admission Requirements & Procedures</h2>
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-muted-foreground leading-relaxed space-y-4">
+                  <p>
+                    Information regarding availability of seats may be obtained by calling the school Office and, if
+                    seats are available, arrangements for an admission test date will be set.
+                  </p>
+                  <p>
+                    Except for Playgroup and Lower Shishu, admission into other classes depends upon the availability of
+                    seats. A printed notice regarding annual admission procedures will be posted on our Notice Board as
+                    well as included in our School Newsletter and Website.
+                  </p>
+                  <p>
+                    New students in all classes will be required to pass an admission test and/or interview before
+                    admission. Students are admitted and placed in their proper grade and language medium with
+                    consideration of the following:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Age</li>
+                    <li>Achievement level</li>
+                    <li>Language proficiency</li>
+                    <li>Grade level at previous school</li>
+                    <li>Emotional and physical maturity</li>
+                  </ul>
+                  <p>
+                    We give preference to some such as in-house transfers, actual siblings of current students, etc.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Admission Process */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Admission Process</h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -36,25 +80,25 @@ export default function AdmissionsPage() {
                 icon: FileText,
                 step: "Step 1",
                 title: "Get Application Form",
-                description: "Collect or download the admission form",
+                description: "Collect or download the admission form from office",
               },
               {
-                icon: CheckCircle,
+                icon: ClipboardList,
                 step: "Step 2",
                 title: "Submit Documents",
-                description: "Submit required documents with form",
+                description: "Submit required documents with the completed form",
               },
               {
                 icon: Users,
                 step: "Step 3",
-                title: "Admission Test",
-                description: "Appear for the admission test",
+                title: "Admission Test/Interview",
+                description: "Appear for the admission test and/or interview",
               },
               {
                 icon: CreditCard,
                 step: "Step 4",
-                title: "Complete Payment",
-                description: "Pay fees and complete admission",
+                title: "Complete Admission",
+                description: "Pay fees and complete the admission process",
               },
             ].map((item, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all">
@@ -73,7 +117,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* Required Documents */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Required Documents</h2>
@@ -99,14 +143,13 @@ export default function AdmissionsPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="font-bold mb-4 text-lg">Additional Requirements:</h3>
+                    <h3 className="font-bold mb-4 text-lg">Important Notes:</h3>
                     <ul className="space-y-3">
                       {[
-                        "[Add any additional documents]",
-                        "[Specific to your school]",
-                        "[Required certificates]",
-                        "[Special forms]",
-                        "[Other documents]",
+                        "All original documents must be presented",
+                        "Photocopies should be attested",
+                        "Documents should be submitted before deadline",
+                        "Incomplete applications will not be processed",
                       ].map((doc, index) => (
                         <li key={index} className="flex items-start gap-2 text-muted-foreground">
                           <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
@@ -122,33 +165,26 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      {/* Fee Structure */}
-      <section className="py-20 bg-background">
+      {/* Programs Offered */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Fee Structure</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Programs Offered</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="border-2 border-primary/20">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">English Medium</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Admission Fee:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
+                <p className="text-muted-foreground text-center">
+                  Following international curriculum standards with English as the primary medium of instruction.
+                </p>
+                <div className="text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground mb-2">Levels:</p>
+                  <ul className="list-disc pl-4 space-y-1">
+                    <li>Playgroup to Grade 10</li>
+                    <li>IGCSE preparation</li>
+                  </ul>
                 </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Monthly Tuition:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Annual Fee:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Books & Supplies:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <p className="text-xs text-muted-foreground text-center pt-2">*Fees may vary by grade level</p>
               </CardContent>
             </Card>
 
@@ -157,53 +193,15 @@ export default function AdmissionsPage() {
                 <CardTitle className="text-2xl text-center">Bangla Medium</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Admission Fee:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Monthly Tuition:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Annual Fee:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <div className="flex justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Books & Supplies:</span>
-                  <span className="font-bold">[AMOUNT] BDT</span>
-                </div>
-                <p className="text-xs text-muted-foreground text-center pt-2">*Fees may vary by grade level</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Important Dates */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Important Dates</h2>
-          <div className="max-w-3xl mx-auto">
-            <Card>
-              <CardContent className="p-8">
-                <div className="space-y-6">
-                  {[
-                    { event: "Admission Form Available", date: "[DATE]" },
-                    { event: "Last Date to Submit Form", date: "[DATE]" },
-                    { event: "Admission Test Date", date: "[DATE]" },
-                    { event: "Result Publication", date: "[DATE]" },
-                    { event: "Final Admission Deadline", date: "[DATE]" },
-                    { event: "Academic Year Starts", date: "[DATE]" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center justify-between py-3 border-b last:border-0">
-                      <div className="flex items-center gap-3">
-                        <Calendar className="h-5 w-5 text-primary" />
-                        <span className="font-medium">{item.event}</span>
-                      </div>
-                      <span className="text-muted-foreground">{item.date}</span>
-                    </div>
-                  ))}
+                <p className="text-muted-foreground text-center">
+                  Following national curriculum with Bengali as the primary medium of instruction.
+                </p>
+                <div className="text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground mb-2">Levels:</p>
+                  <ul className="list-disc pl-4 space-y-1">
+                    <li>Shishu to Class 10</li>
+                    <li>SSC preparation</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
@@ -211,26 +209,30 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      {/* Download Forms */}
+      {/* Contact for Admission */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Download Forms</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[
-              { title: "Admission Form (English)", file: "admission-form-english.pdf" },
-              { title: "Admission Form (Bangla)", file: "admission-form-bangla.pdf" },
-              { title: "Prospectus 2025", file: "prospectus-2025.pdf" },
-            ].map((form, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all">
-                <CardContent className="p-6 text-center">
-                  <Download className="h-12 w-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-bold mb-4">{form.title}</h3>
-                  <Button className="w-full bg-transparent" variant="outline">
-                    Download PDF
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Have Questions?</h2>
+            <p className="text-muted-foreground mb-8">Contact our admission office for more information</p>
+            <Card>
+              <CardContent className="p-8">
+                <div className="space-y-4 text-left">
+                  <div>
+                    <p className="font-medium">Phone:</p>
+                    <p className="text-muted-foreground">+880-2-41031641, +880-2-41032356, +880-2-41030971</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Email:</p>
+                    <p className="text-muted-foreground">info@agcs.edu.bd</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Address:</p>
+                    <p className="text-muted-foreground">401/1, New Eskaton Road, Dhaka, Bangladesh</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -239,9 +241,9 @@ export default function AdmissionsPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">Have Questions?</h2>
+            <h2 className="text-3xl font-bold text-center mb-4">Admission Inquiry</h2>
             <p className="text-center text-muted-foreground mb-12">
-              Fill out the form below and we'll get back to you soon
+              Fill out the form below and we&apos;ll get back to you soon
             </p>
             <Card>
               <CardContent className="p-8">
@@ -253,7 +255,7 @@ export default function AdmissionsPage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="grade">Grade Applying For *</Label>
-                      <Input id="grade" placeholder="e.g., Grade 8" />
+                      <Input id="grade" placeholder="e.g., Grade 7" />
                     </div>
                   </div>
 

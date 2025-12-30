@@ -12,24 +12,70 @@ const galleryCategories = [
   { id: "all", name: "All Photos" },
   { id: "campus", name: "Campus Life" },
   { id: "events", name: "Events" },
-  { id: "sports", name: "Sports" },
   { id: "academics", name: "Academics" },
-  { id: "arts", name: "Arts & Culture" },
 ]
 
 const galleryImages = [
-  { src: "/gallery-campus-1.jpg", alt: "School Building", category: "campus" },
-  { src: "/gallery-sports-1.jpg", alt: "Sports Day", category: "sports" },
-  { src: "/gallery-event-1.jpg", alt: "Annual Function", category: "events" },
-  { src: "/gallery-academics-1.jpg", alt: "Classroom", category: "academics" },
-  { src: "/gallery-arts-1.jpg", alt: "Art Exhibition", category: "arts" },
-  { src: "/gallery-campus-2.jpg", alt: "School Garden", category: "campus" },
-  { src: "/gallery-sports-2.jpg", alt: "Football Match", category: "sports" },
-  { src: "/gallery-event-2.jpg", alt: "Science Fair", category: "events" },
-  { src: "/gallery-academics-2.jpg", alt: "Library", category: "academics" },
-  { src: "/gallery-arts-2.jpg", alt: "Music Class", category: "arts" },
-  { src: "/gallery-campus-3.jpg", alt: "Playground", category: "campus" },
-  { src: "/gallery-event-3.jpg", alt: "Prize Distribution", category: "events" },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1701757107_P1200828.JPG",
+    alt: "School Event",
+    category: "events",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702446428_IMG_20170915_112054.jpg",
+    alt: "Campus Activity",
+    category: "campus",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702445752_DSC_8299.JPG",
+    alt: "School Program",
+    category: "events",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1741670374_DSC_6283%20-%201K%20JPEG.jpg",
+    alt: "Campus Life",
+    category: "campus",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702446427_20170914_165758.jpg",
+    alt: "School Activity",
+    category: "campus",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702448330_DSC_6262.JPG",
+    alt: "School Function",
+    category: "events",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1703044207_DSC_4132.JPG",
+    alt: "Academic Event",
+    category: "academics",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702443477_DSC_1540.JPG",
+    alt: "School Ceremony",
+    category: "events",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1709007172_IGCSE%202023.JPG",
+    alt: "IGCSE 2023",
+    category: "academics",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/images/1702441916_DSC_9870.JPG",
+    alt: "School Gathering",
+    category: "campus",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/sliders/1707033914_01.jpg",
+    alt: "School Building",
+    category: "campus",
+  },
+  {
+    src: "https://agcs.edu.bd/storage/images/sliders/1707033919_02.jpg",
+    alt: "School Campus",
+    category: "campus",
+  },
 ]
 
 export default function GalleryPage() {
@@ -42,16 +88,21 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      {/* Hero Section */}
+      {/* Hero Section - Real image */}
       <section className="relative h-[400px] bg-muted overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/gallery-hero.jpg" alt="Photo Gallery" fill className="object-cover" />
+          <Image
+            src="https://agcs.edu.bd/storage/images/sliders/1707033963_04.jpg"
+            alt="AGCS Photo Gallery"
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl font-bold mb-4 text-balance">Photo Gallery</h1>
-            <p className="text-xl text-balance opacity-90">Capturing moments, creating memories</p>
+            <p className="text-xl text-balance opacity-90">Capturing moments, creating memories at AGCS</p>
           </div>
         </div>
       </section>
@@ -92,7 +143,7 @@ export default function GalleryPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors flex items-center justify-center">
-                    <p className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity text-center px-2">
                       {image.alt}
                     </p>
                   </div>
@@ -133,42 +184,33 @@ export default function GalleryPage() {
         </div>
       )}
 
-      {/* Video Section */}
+      {/* Video Section - Real AGCS video */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">School Videos</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <Card className="overflow-hidden">
               <div className="aspect-video">
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="School Tour"
+                  src="https://www.youtube.com/embed/-I7uEvPvVyw?si=S4H7l8i2YVuivr3g"
+                  title="AGCS Dhaka"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
               <div className="p-4">
-                <h3 className="font-bold">[Video Title 1]</h3>
-                <p className="text-sm text-muted-foreground">[Brief description]</p>
+                <h3 className="font-bold">Assemblies of God Church School, Dhaka</h3>
+                <p className="text-sm text-muted-foreground">Watch our school video on YouTube</p>
               </div>
             </Card>
-
-            <Card className="overflow-hidden">
-              <div className="aspect-video">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Annual Function"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold">[Video Title 2]</h3>
-                <p className="text-sm text-muted-foreground">[Brief description]</p>
-              </div>
-            </Card>
+            <div className="text-center mt-6">
+              <Button asChild variant="outline">
+                <a href="https://www.youtube.com/@AGCSDhaka" target="_blank" rel="noopener noreferrer">
+                  Visit Our YouTube Channel
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { GraduationCap, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,10 +14,16 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-3">
-            <GraduationCap className="h-8 w-8 text-primary" />
+            <Image
+              src="https://www.agcs.edu.bd/storage/images/settings/1747110409_New%20AGCS%20Logo%20PNG.png"
+              alt="AGCS Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
             <div>
-              <h1 className="text-xl font-bold text-foreground leading-none">[SCHOOL LOGO/NAME]</h1>
-              <p className="text-xs text-muted-foreground">Excellence in Education</p>
+              <h1 className="text-lg font-bold text-foreground leading-none">AGCS Dhaka</h1>
+              <p className="text-xs text-muted-foreground">Assemblies of God Church School</p>
             </div>
           </Link>
 
@@ -55,8 +62,8 @@ export function Navbar() {
             >
               Contact
             </Link>
-            <Button size="sm" className="ml-2">
-              Apply Now
+            <Button size="sm" className="ml-2" asChild>
+              <Link href="/admissions">Apply Now</Link>
             </Button>
           </div>
 
@@ -111,8 +118,8 @@ export function Navbar() {
             >
               Contact
             </Link>
-            <Button size="sm" className="w-full" onClick={() => setMobileMenuOpen(false)}>
-              Apply Now
+            <Button size="sm" className="w-full" onClick={() => setMobileMenuOpen(false)} asChild>
+              <Link href="/admissions">Apply Now</Link>
             </Button>
           </div>
         )}

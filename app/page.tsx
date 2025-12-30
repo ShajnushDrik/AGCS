@@ -14,7 +14,13 @@ export default function HomePage() {
       {/* Hero Slider */}
       <section className="relative h-[500px] bg-muted">
         <div className="absolute inset-0">
-          <Image src="/modern-school-campus-building-aerial-view.jpg" alt="School Campus" fill className="object-cover" priority />
+          <Image
+            src="/modern-school-campus-building-aerial-view.jpg"
+            alt="School Campus"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
         </div>
         <div className="relative container mx-auto h-full flex items-center px-4">

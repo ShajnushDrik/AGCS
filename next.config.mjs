@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/AGCS',
   typescript: {
     ignoreBuildErrors: true,
   },

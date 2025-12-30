@@ -237,6 +237,34 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
+{/* Contact for Admission */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Have Questions?</h2>
+            <p className="text-muted-foreground mb-8">Contact our admission office for more information</p>
+            <Card>
+              <CardContent className="p-8">
+                <div className="space-y-4 text-left">
+                  <div>
+                    <p className="font-medium">Phone:</p>
+                    <p className="text-muted-foreground">+880-2-41031641, +880-2-41032356, +880-2-41030971</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Email:</p>
+                    <p className="text-muted-foreground">info@agcs.edu.bd</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Address:</p>
+                    <p className="text-muted-foreground">401/1, New Eskaton Road, Dhaka, Bangladesh</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Inquiry Form */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -247,40 +275,47 @@ export default function AdmissionsPage() {
             </p>
             <Card>
               <CardContent className="p-8">
-                <form className="space-y-6">
+                {/* 1. Added Formspree action and method */}
+                <form action="https://formspree.io/f/mnjqyarg" method="POST" className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Student Name *</Label>
-                      <Input id="name" placeholder="Enter student name" />
+                      {/* 2. Added name="student_name" */}
+                      <Input id="name" name="student_name" placeholder="Enter student name" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="grade">Grade Applying For *</Label>
-                      <Input id="grade" placeholder="e.g., Grade 7" />
+                      {/* 3. Added name="grade_applying_for" */}
+                      <Input id="grade" name="grade_applying_for" placeholder="e.g., Grade 7" required />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="parent">Parent/Guardian Name *</Label>
-                      <Input id="parent" placeholder="Enter parent name" />
+                      {/* 4. Added name="parent_name" */}
+                      <Input id="parent" name="parent_name" placeholder="Enter parent name" required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" type="tel" placeholder="01XXXXXXXXX" />
+                      {/* 5. Added name="phone" */}
+                      <Input id="phone" name="phone" type="tel" placeholder="01XXXXXXXXX" required />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" placeholder="email@example.com" />
+                    {/* 6. Added name="email" */}
+                    <Input id="email" name="email" type="email" placeholder="email@example.com" required />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message/Questions</Label>
-                    <Textarea id="message" placeholder="Any questions or special requirements?" rows={4} />
+                    {/* 7. Added name="message" */}
+                    <Textarea id="message" name="message" placeholder="Any questions or special requirements?" rows={4} />
                   </div>
 
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button type="submit" className="w-full bg-blue-900 text-white" size="lg">
                     Submit Inquiry
                   </Button>
                 </form>
@@ -290,6 +325,3 @@ export default function AdmissionsPage() {
         </div>
       </section>
       <Footer />
-    </div>
-  )
-}

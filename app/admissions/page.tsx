@@ -176,7 +176,7 @@ export default function AdmissionsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground text-center">
-                  Following international curriculum standards with English as the primary medium of instruction.
+                  Following Pearson Edexcel Curriculum standards English as the primary medium of instruction.
                 </p>
                 <div className="text-sm text-muted-foreground">
                   <p className="font-medium text-foreground mb-2">Levels:</p>
@@ -194,7 +194,7 @@ export default function AdmissionsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground text-center">
-                  Following national curriculum with Bengali as the primary medium of instruction.
+                  Following NCTB (National Curriculum and Textbook Board) Framework with Bengali as the primary medium of instruction.
                 </p>
                 <div className="text-sm text-muted-foreground">
                   <p className="font-medium text-foreground mb-2">Levels:</p>

@@ -152,7 +152,7 @@ export default function ContactPage() {
             <CardContent className="p-0">
               <div className="aspect-video w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.183422119106!2d90.4001!3d23.7408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b88ec54979e3%3A0x6a0a09e05697669d!2sNew%20Eskaton%20Rd%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.128711466074!2d90.3980183758832!3d23.742813589076044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8c3f003bf53%3A0x42cb70bd6576d644!2sA.%20G.%20Church%20School!5e0!3m2!1sen!2sbd!4v1714900000000!5m2!1sen!2sbd"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

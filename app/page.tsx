@@ -29,7 +29,7 @@ export default function HomePage() {
               Welcome to Assemblies of God Church School
             </h1>
             <p className="text-lg md:text-xl mb-6 text-pretty">
-              Providing quality education for children of all communities since 1956. Excellence in learning, character
+              Providing quality education for children of all communities since 1982. Excellence in learning, character
               building, and holistic development.
             </p>
             <div className="flex gap-4">
@@ -89,14 +89,7 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/academics">
-              <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-                <CardContent className="p-6 text-center">
-                  <BookOpen className="h-10 w-10 mx-auto mb-3 text-primary" />
-                  <h3 className="font-semibold">Academics</h3>
-                </CardContent>
-              </Card>
-            </Link>
+          
             <Link href="/gallery">
               <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
                 <CardContent className="p-6 text-center">

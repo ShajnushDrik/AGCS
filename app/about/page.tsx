@@ -100,76 +100,15 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our History</h2>
+              <h2 className="text-3xl font-bold mb-6">About Us</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  [Replace with your school's founding story. When was it established? Who founded it? What was the
-                  original vision?]
-                </p>
-                <p>
-                  [Add more history about how the school has grown and evolved over the years. What milestones have you
-                  achieved?]
-                </p>
-                <p>
-                  [Mention any significant achievements, expansions, or changes that have shaped your school into what
-                  it is today.]
-                </p>
+The Assemblies of God Church School/Dhaka was established and is operated to provide quality education for the children of all communities, irrespective of caste or religion, recognizing and maintaining that the guiding principle of the government, character and discipline of the school shall be based on Christian teaching.
               </div>
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <Image src="/historical-school-photo.jpg" alt="Historical Photo" fill className="object-cover" />
+              <Image src="/AGCS.jpg" alt="AGCS Photo" fill className="object-cover" />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Success & Achievements</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Award, title: "[Achievement 1]", description: "[Year/Details]" },
-              { icon: Award, title: "[Achievement 2]", description: "[Year/Details]" },
-              { icon: Award, title: "[Achievement 3]", description: "[Year/Details]" },
-              { icon: Award, title: "[Achievement 4]", description: "[Year/Details]" },
-            ].map((achievement, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-6">
-                  <div className="bg-primary/10 text-primary inline-flex p-4 rounded-xl mb-4">
-                    <achievement.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-bold mb-2">{achievement.title}</h3>
-                  <p className="text-sm text-muted-foreground">{achievement.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Governing Body */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Governing Body</h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((member) => (
-              <Card key={member}>
-                <CardContent className="p-6 text-center">
-                  <div className="relative h-32 w-32 mx-auto mb-4 rounded-full overflow-hidden">
-                    <Image
-                      src={`/board-member-${member}.jpg`}
-                      alt={`Board Member ${member}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <h3 className="font-bold mb-1">[Member Name]</h3>
-                  <p className="text-sm text-muted-foreground mb-2">[Position]</p>
-                  <p className="text-xs text-muted-foreground">[Brief info or qualifications]</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>

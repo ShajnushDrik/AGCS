@@ -1,217 +1,178 @@
 import Image from "next/image"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { BookOpen, GraduationCap, Microscope, Globe, Calculator, Palette, Music, Dumbbell } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { Bell, Calendar, Download, FileText, ExternalLink, Filter } from "lucide-react"
 
-export default function AcademicsPage() {
+// --- REAL AGCS DATA FROM OFFICIAL SITE ---
+const officialNotices = [
+  {
+    date: "14 Dec 2025",
+    title: "Admission Test Result Sheet (Bangla Medium Year - 2026)",
+    category: "Bangla Medium",
+    priority: "High",
+  },
+  {
+    date: "27 Nov 2025",
+    title: "Notice for Bangla Medium Students - Year End Instructions",
+    category: "Bangla Medium",
+    priority: "Normal",
+  },
+  {
+    date: "24 Nov 2025",
+    title: "Important notice for the missed examination",
+    category: "General",
+    priority: "Urgent",
+  },
+  {
+    date: "23 Nov 2025",
+    title: "Urgent Notice (English & Bangla Medium Combined)",
+    category: "General",
+    priority: "Urgent",
+  },
+  {
+    date: "18 Nov 2025",
+    title: "Lower Shishu result sheet for new admission 2026",
+    category: "Admission",
+    priority: "High",
+  },
+  {
+    date: "16 Nov 2025",
+    title: "Online class notice regarding security concerns",
+    category: "Academic",
+    priority: "Urgent",
+  },
+  {
+    date: "06 Nov 2025",
+    title: "School Newsletter (Issue: 11 November 2025)",
+    category: "General",
+    priority: "Normal",
+  }
+]
+
+export default function AGCSNoticeBoard() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-50">
       <Navbar />
-      {/* Hero Section */}
-      <section className="relative h-[400px] bg-muted overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/students-studying-together.jpg" alt="Academic Excellence" fill className="object-cover" />
-          <div className="absolute inset-0 bg-foreground/50" />
-        </div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-5xl font-bold mb-4 text-balance">Academic Excellence</h1>
-            <p className="text-xl text-balance opacity-90">Nurturing curious minds through quality education</p>
+
+      {/* AGCS Official Header Style */}
+      <section className="bg-blue-900 py-12 border-b-4 border-yellow-500">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-white text-center md:text-left">
+              <h1 className="text-4xl font-bold mb-2">AGCS Notice Board</h1>
+              <p className="text-blue-100 italic">"Train up a child in the way he should go"</p>
+            </div>
+            <div className="flex gap-3">
+              <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+                English Medium
+              </Button>
+              <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+                Bangla Medium
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Programs Overview */}
-      <section className="py-20 bg-background">
+      {/* Main Notice Board Content */}
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Programs</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-2 hover:border-primary/50 transition-colors">
-              <CardHeader>
-                <div className="bg-primary/10 text-primary inline-flex p-4 rounded-xl mb-2 w-fit">
-                  <BookOpen className="h-8 w-8" />
-                </div>
-                <CardTitle className="text-2xl">English Medium</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  [Describe your English Medium program. What curriculum do you follow? What grades do you offer? What
-                  makes it special?]
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• [Grade levels offered]</li>
-                  <li>• [Curriculum type - e.g., Cambridge, Edexcel]</li>
-                  <li>• [Special features or programs]</li>
-                  <li>• [Class timings]</li>
-                </ul>
-                <Button className="mt-6">Learn More</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-secondary/50 transition-colors">
-              <CardHeader>
-                <div className="bg-secondary/10 text-secondary inline-flex p-4 rounded-xl mb-2 w-fit">
-                  <GraduationCap className="h-8 w-8" />
-                </div>
-                <CardTitle className="text-2xl">Bangla Medium</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  [Describe your Bangla Medium program. What curriculum do you follow? What grades do you offer? What
-                  makes it special?]
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• [Grade levels offered]</li>
-                  <li>• [Curriculum type - e.g., National Curriculum]</li>
-                  <li>• [Special features or programs]</li>
-                  <li>• [Class timings]</li>
-                </ul>
-                <Button className="mt-6" variant="secondary">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Subjects */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Subjects We Teach</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { icon: Calculator, title: "Mathematics", color: "bg-primary/10 text-primary" },
-              { icon: Microscope, title: "Science", color: "bg-secondary/10 text-secondary" },
-              { icon: BookOpen, title: "Languages", color: "bg-accent/10 text-accent" },
-              { icon: Globe, title: "Social Studies", color: "bg-primary/10 text-primary" },
-              { icon: Palette, title: "Arts", color: "bg-secondary/10 text-secondary" },
-              { icon: Music, title: "Music", color: "bg-accent/10 text-accent" },
-              { icon: Dumbbell, title: "Physical Education", color: "bg-primary/10 text-primary" },
-              { icon: BookOpen, title: "Religious Studies", color: "bg-secondary/10 text-secondary" },
-            ].map((subject, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <div className={`inline-flex p-4 rounded-xl mb-3 ${subject.color}`}>
-                    <subject.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold">{subject.title}</h3>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Facilities */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Academic Facilities</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <div className="relative h-48">
-                <Image src="/modern-library-facility.jpg" alt="Library" fill className="object-cover rounded-t-lg" />
+          <div className="max-w-5xl mx-auto">
+            
+            {/* Filter / Search Bar */}
+            <div className="flex items-center justify-between mb-8 bg-white p-4 rounded-lg shadow-sm border">
+              <div className="flex items-center gap-2 text-blue-900 font-semibold">
+                <Filter className="h-5 w-5" />
+                <span>Filter by Year: 2025</span>
               </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-3">Library</h3>
-                <p className="text-muted-foreground text-sm">
-                  [Describe your library facilities. How many books? Digital resources? Study areas?]
-                </p>
-              </CardContent>
-            </Card>
+              <p className="text-sm text-muted-foreground italic">EIIN: 900078</p>
+            </div>
 
-            <Card>
-              <div className="relative h-48">
-                <Image src="/science-lab-equipment.jpg" alt="Science Labs" fill className="object-cover rounded-t-lg" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-3">Science Labs</h3>
-                <p className="text-muted-foreground text-sm">
-                  [Describe your lab facilities. Physics, Chemistry, Biology labs? What equipment do you have?]
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <div className="relative h-48">
-                <Image src="/computer-lab-modern.jpg" alt="Computer Lab" fill className="object-cover rounded-t-lg" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-3">Computer Lab</h3>
-                <p className="text-muted-foreground text-sm">
-                  [Describe your computer facilities. How many computers? What software? Internet access?]
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Class Routine */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Class Timings</h2>
-          <div className="max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-xl font-bold mb-4 text-primary">English Medium</h3>
-                    <div className="space-y-3 text-muted-foreground">
-                      <div className="flex justify-between">
-                        <span>School Starts:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>School Ends:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Lunch Break:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold mb-4 text-secondary">Bangla Medium</h3>
-                    <div className="space-y-3 text-muted-foreground">
-                      <div className="flex justify-between">
-                        <span>School Starts:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>School Ends:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Lunch Break:</span>
-                        <span className="font-semibold text-foreground">[TIME]</span>
-                      </div>
-                    </div>
-                  </div>
+            {/* The Notice Table - Styled like agcs.edu.bd */}
+            <Card className="shadow-lg border-none">
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-slate-100 border-b">
+                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Date</th>
+                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Notice Heading</th>
+                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider">Category</th>
+                        <th className="p-4 font-bold text-blue-900 uppercase text-xs tracking-wider text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      {officialNotices.map((notice, index) => (
+                        <tr key={index} className="hover:bg-blue-50/50 transition-colors group">
+                          <td className="p-4 whitespace-nowrap">
+                            <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
+                              <Calendar className="h-4 w-4 text-blue-800" />
+                              {notice.date}
+                            </div>
+                          </td>
+                          <td className="p-4">
+                            <h3 className="font-semibold text-slate-800 group-hover:text-blue-900 transition-colors">
+                              {notice.title}
+                            </h3>
+                            {notice.priority === 'Urgent' && (
+                                <span className="inline-block mt-1 px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase animate-pulse">
+                                    Urgent
+                                </span>
+                            )}
+                          </td>
+                          <td className="p-4">
+                            <span className={`text-[10px] font-bold px-2 py-1 rounded-full uppercase ${
+                                notice.category === 'Admission' ? 'bg-green-100 text-green-700' : 
+                                notice.category === 'Bangla Medium' ? 'bg-amber-100 text-amber-700' :
+                                'bg-slate-100 text-slate-600'
+                            }`}>
+                              {notice.category}
+                            </span>
+                          </td>
+                          <td className="p-4 text-right">
+                            <Button variant="ghost" size="sm" className="text-blue-900 hover:bg-blue-100">
+                              <Download className="h-4 w-4 mr-2" /> PDF
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
             </Card>
+
+            {/* Pagination / Footer Info */}
+            <div className="mt-8 flex justify-center gap-2">
+                <Button variant="outline" size="sm" disabled>Previous</Button>
+                <Button variant="outline" size="sm" className="bg-blue-900 text-white">1</Button>
+                <Button variant="outline" size="sm">2</Button>
+                <Button variant="outline" size="sm">Next</Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Teaching Approach */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Our Teaching Approach</h2>
-            <p className="text-muted-foreground leading-relaxed text-lg mb-8">
-              [Describe your teaching philosophy and methodology. How do you engage students? What makes your approach
-              unique? Do you use technology? How do you support different learning styles?]
+      {/* Official Contact Info Footer Hook */}
+      <section className="py-12 bg-white border-t">
+        <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl font-bold text-blue-900 mb-4">Official Documentation</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+                For legal inquiries or hard copies of these notices, please visit the Administrative Office at 401/1, New Eskaton Road, Dhaka.
             </p>
-            <Button size="lg">Download Academic Prospectus</Button>
-          </div>
+            <div className="flex flex-wrap justify-center gap-4">
+                <Button className="bg-blue-900 flex gap-2">
+                    <FileText className="h-4 w-4" /> Download Prospectus
+                </Button>
+                <Button variant="outline" className="border-blue-900 text-blue-900 flex gap-2">
+                    <ExternalLink className="h-4 w-4" /> Odhyyon Portal
+                </Button>
+            </div>
         </div>
       </section>
+
       <Footer />
     </div>
   )

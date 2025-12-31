@@ -42,7 +42,7 @@ const galleryImages = [
   { src: "https://agcs.edu.bd/storage/images/images/1702446101_DSC_2922.JPG", alt: "Computer Lab Session", category: "academic" },
 ]
 
-export default function GalleryPage() {
+export default function GalleryPage()
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
